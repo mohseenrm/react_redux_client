@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "cb01c2d4a3ae3a32df00"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "b7ab48c3147aa74255bd"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -8475,7 +8475,7 @@
 
 	var pair = ['Trainspotting', '28 Days Later'];
 
-	_reactDom2.default.render(_react2.default.createElement(_Voting2.default, { pair: pair }), document.getElementById('app'));
+	_reactDom2.default.render(_react2.default.createElement(_Voting2.default, { pair: pair, winner: 'Trainspotting' }), document.getElementById('app'));
 
 	/* REACT HOT LOADER */ }).call(this); } finally { if (true) { (function () { var foundReactClasses = module.hot.data && module.hot.data.foundReactClasses || false; if (module.exports && module.makeHot) { var makeExportsHot = __webpack_require__(266); if (makeExportsHot(module, __webpack_require__(174))) { foundReactClasses = true; } var shouldAcceptModule = true && foundReactClasses; if (shouldAcceptModule) { module.hot.accept(function (err) { if (err) { console.error("Cannot apply hot update to " + "index.jsx" + ": " + err.message); } }); } } module.hot.dispose(function (data) { data.makeHot = module.makeHot; data.foundReactClasses = foundReactClasses; }); })(); } }
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)(module)))
@@ -30139,19 +30139,42 @@
 	    getPair: function getPair() {
 	        return this.props.pair || [];
 	    },
+	    isDisabled: function isDisabled() {
+	        return !!this.props.hasVoted;
+	    },
+	    hasVotedFor: function hasVotedFor(entry) {
+	        return this.props.hasVoted === entry;
+	    },
 	    render: function render() {
+	        var _this = this;
+
 	        return _react2.default.createElement(
 	            "div",
 	            { className: "voting" },
-	            this.getPair().map(function (entry) {
+	            this.props.winner ? _react2.default.createElement(
+	                "div",
+	                { ref: "winner" },
+	                "Winner is ",
+	                this.props.winner,
+	                "!"
+	            ) : this.getPair().map(function (entry) {
 	                return _react2.default.createElement(
 	                    "button",
-	                    { key: entry },
+	                    { key: entry,
+	                        disabled: _this.isDisabled(),
+	                        onClick: function onClick() {
+	                            return _this.props.vote(entry);
+	                        } },
 	                    _react2.default.createElement(
 	                        "h1",
 	                        null,
 	                        entry
-	                    )
+	                    ),
+	                    _this.hasVotedFor(entry) ? _react2.default.createElement(
+	                        "div",
+	                        { className: "label" },
+	                        "Voted"
+	                    ) : null
 	                );
 	            })
 	        );
