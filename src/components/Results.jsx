@@ -16,7 +16,10 @@ export default React.createClass({
         return <div className="results">
             {this.getPair().map(entry =>
                 <div key={entry} className="entry">
-                <h1>{entry}</h1>
+                    <h1>{entry}</h1>
+                    <div className="voteCount">
+                        {this.getVotes(entry)}
+                    </div>
                 </div>
             )}
             </div>;
