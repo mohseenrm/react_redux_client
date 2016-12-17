@@ -26,7 +26,7 @@ describe('Results', () => {
         expect(days).to.contain('28 Days Later');
         expect(days).to.contain('0');
     });
-
+//new one
     it('invokes the next callback when next button is clicked', () => {
         let nextInvoked = false;
         const next = () => nextInvoked = true;
