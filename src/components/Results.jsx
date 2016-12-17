@@ -16,12 +16,12 @@ export default React.createClass({
         return <div className="results">
             <div className="tally">
                 {this.getPair().map(entry =>
-                <div key={entry} className="entry">
-                    <h1>{entry}</h1>
-                    <div class="voteCount">
-                    {this.getVotes(entry)}
+                    <div key={entry} className="entry">
+                        <h1>{entry}</h1>
+                        <div class="voteCount">
+                        {this.getVotes(entry)}
+                        </div>
                     </div>
-                </div>
                 )}
             </div>
             <div className="management">
