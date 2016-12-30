@@ -8,7 +8,7 @@ import {
 } from 'chai';
 
 import reducer from '../src/reducer';
-//sample
+//I'm back :)
 describe('reducer', () => {
 
     it('handles SET_STATE', () => {
