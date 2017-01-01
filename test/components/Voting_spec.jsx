@@ -4,7 +4,7 @@ import {renderIntoDocument, scryRenderedDOMComponentsWithTag, Simulate} from 're
 import {Voting} from '../../src/components/Voting';
 import {List} from 'immutable';
 import {expect} from 'chai';
-
+//adding links
 describe('Voting', () => {
 
     it('renders a pair of buttons', () => {
